@@ -213,6 +213,169 @@
         </div>
         <br><br><br>
         <!-- <a href="indexo.html" class="main-btn">Show more</a>-->
+
+
+            
+  
+    <!-- عنوان أسعار التوصيل -->
+    <h3 class="title"> اسعار توصيل الى مكاتب </h3> 
+    <p class="title">ZRexpress </p>
+    <p class="footer-title">اختر  ولايتك لتحديد سعر التوصيل</p>
+
+    <!-- اختيار الولاية -->
+    <label for="wilaya"></label>
+    <select id="wilaya" onchange="updatePrice()">
+        <option value="" disabled selected>اضغط هنا لاختيار ولاية</option>
+        <option value="1">أدرار</option>
+        <option value="2">الشلف</option>
+        <option value="3">الأغواط</option>
+        <option value="4">أم البواقي</option>
+        <option value="5">باتنة</option>
+        <option value="6">بجاية</option>
+        <option value="7">بسكرة</option>
+        <option value="8">بشار</option>
+        <option value="9">البليدة</option>
+        <option value="10">البويرة</option>
+        <option value="11">تمنراست</option>
+        <option value="12">تبسة</option>
+        <option value="13">تلمسان</option>
+        <option value="14">تيارت</option>
+        <option value="15">تيزي وزو</option>
+        <option value="16">الجزائر</option>
+        <option value="17">الجلفة</option>
+        <option value="18">جيجل</option>
+        <option value="19">سطيف</option>
+        <option value="20">سعيدة</option>
+        <option value="21">سكيكدة</option>
+        <option value="22">سيدي بلعباس</option>
+        <option value="23">عنابة</option>
+        <option value="24">قالمة</option>
+        <option value="25">قسنطينة</option>
+        <option value="26">المدية</option>
+        <option value="27">مستغانم</option>
+        <option value="28">المسيلة</option>
+        <option value="29">معسكر</option>
+        <option value="30">ورقلة</option>
+        <option value="31">وهران</option>
+        <option value="32">البيض</option>
+        <option value="33">إليزي</option>
+        <option value="34">برج بوعريريج</option>
+        <option value="35">بومرداس</option>
+        <option value="36">الطارف</option>
+        <option value="37">تندوف</option>
+        <option value="38">تيسمسيلت</option>
+        <option value="39">الوادي</option>
+        <option value="40">خنشلة</option>
+        <option value="41">سوق أهراس</option>
+        <option value="42">تيبازة</option>
+        <option value="43">ميلة</option>
+        <option value="44">عين الدفلى</option>
+        <option value="45">النعامة</option>
+        <option value="46">عين تموشنت</option>
+        <option value="47">غرداية</option>
+        <option value="48">غليزان</option>
+        <option value="49">تيميمون</option>
+        <option value="50">برج باجي مختار</option>
+        <option value="51">أولاد جلال</option>
+        <option value="52">بني عباس</option>
+        <option value="53">عين صالح</option>
+        <option value="54">عين قزام</option>
+        <option value="55">تقرت</option>
+        <option value="56">جانت</option>
+        <option value="57">المغير</option>
+        <option value="58">المنيعة</option>
+    </select>
+
+    <!-- عرض السعر بناءً على الاختيار -->
+    <p id="delivery-price" style="display: none; margin-top: 10px;">سعر التوصيل: <span id="price">0</span> دج</p>
+
+    <br>
+</section>
+
+<script>
+    // إضافة CSS برمجيًا داخل JavaScript
+    var style = document.createElement('style');
+    style.innerHTML = `
+        /* تنسيق العنوان */
+        h3.title {
+            font-size: 24px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        /* تنسيق النص */
+        .footer-title {
+            font-size: 16px;
+            text-align: center;
+            color: #fff;
+        }
+
+        /* تنسيق select */
+        select {
+            display: block;
+            width: 90%;
+            max-width: 300px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* تنسيق السعر */
+        #delivery-price {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 200px;
+            margin: 10px auto;
+            display: none;
+        }
+    `;
+    document.head.appendChild(style);
+
+    function updatePrice() {
+        var wilaya = document.getElementById("wilaya").value;
+        var priceText = document.getElementById("price");
+        var priceContainer = document.getElementById("delivery-price");
+
+        // قائمة الأسعار الجديدة
+        var prices = {
+            "1": "970", "2": "520", "3": "670", "4": "520", "5": "520",
+            "6": "520", "7": "370", "8": "720", "9": "520", "10": "520",
+            "11": "1120", "12": "520", "13": "620", "14": "520", "15": "520",
+            "16": "520", "17": "570", "18": "520", "19": "520", "20": "570",
+            "21": "520", "22": "520", "23": "520", "24": "520", "25": "520",
+            "26": "520", "27": "520", "28": "570", "29": "520", "30": "670",
+            "31": "520", "32": "670", "33": "/", "34": "520", "35": "520",
+            "36": "520", "37": "/", "38": "520", "39": "670", "40": "520",
+            "41": "520", "42": "520", "43": "520", "44": "520", "45": "670",
+            "46": "520", "47": "/", "48": "670", "49": "520", "50": "/",
+            "51": "520", "52": "970", "53": "/", "54": "/", "55": "670",
+            "56": "/", "57": "/", "58": "/"
+        };
+        
+        if (wilaya in prices) {
+            priceText.innerText = prices[wilaya];
+            priceContainer.style.display = "block"; // إظهار السعر
+        } else {
+            priceContainer.style.display = "none"; // إخفاء السعر في حالة عدم الاختيار
+        }
+    }
+</script>
             
     </section>
 
